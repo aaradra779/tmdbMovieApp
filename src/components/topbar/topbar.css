@@ -1,0 +1,52 @@
+.topbarContainer {
+  width: 100%;
+  height: 10vh;
+  /* padding: 16px; */
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(17, 89, 183);
+  align-items: center;
+}
+
+/* .topbarLeft {
+  margin-right: 12px;
+} */
+
+/* .topbarRight {
+} */
+
+.home {
+  margin-right: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: aliceblue;
+  /* text-decoration: none; */
+}
+.topbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  font-size: 18px;
+  font-weight: 500;
+  color: aliceblue;
+}
+.icon {
+  color: white;
+  margin-left: 16px;
+  border-radius: 50%;
+  background-color: orange;
+  padding: 4px;
+}
+.LoginButton {
+  background-color: aliceblue !important;
+  color: rgb(17, 89, 183) !important ;
+  border-radius: 10px !important;
+  margin-left: 16px !important;
+  height: 40px !important;
+}
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration: none;
+}
