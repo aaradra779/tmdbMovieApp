@@ -15,11 +15,16 @@
 /* .topbarRight {
 } */
 
+.topbarMiddle {
+  display: flex;
+}
+
 .home {
   margin-right: 18px;
   font-size: 18px;
   font-weight: bold;
   color: aliceblue;
+  cursor: pointer;
   /* text-decoration: none; */
 }
 .topbarRight {
@@ -36,8 +41,9 @@
   color: white;
   margin-left: 16px;
   border-radius: 50%;
-  background-color: orange;
+  /* background-color: midnightblue; */
   padding: 4px;
+  font-size: 2rem !important;
 }
 .LoginButton {
   background-color: aliceblue !important;
