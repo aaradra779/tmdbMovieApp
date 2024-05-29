@@ -1,0 +1,132 @@
+/* position: fixed; */
+/* bottom: 0; */
+/* background-color: white; */
+/* width: 95%; */
+/* padding: 0px 40px 40px 40px; */
+/* width: 100%; */
+
+/* color: black;
+    padding: 10px;
+    width: 95%;
+    border-top: solid gray;
+    border-width: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; */
+
+.footerDiv {
+  color: aliceblue;
+  padding: 10px;
+  background-color: midnightblue;
+  /* width: 95%; */
+  border-top: solid gray;
+  border-width: 2px;
+  height: 40vh;
+
+  /* position: absolute; */
+
+  /* width: 100%; */
+
+  /* display: flex;
+    flex-direction: row; */
+  /* justify-content: space-between; */
+}
+.footerSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* gap: 6em; */
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 8%;
+}
+
+.footerLogo {
+  /* align-items: center;
+    display: flex;
+    width: 40%;
+    gap: 8px; */
+
+  display: block;
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* width: 100%; */
+
+  /* height: 6em; */
+  color: aliceblue;
+}
+
+.logoName {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footerButton {
+  background-color: aliceblue !important;
+  color: rgb(17, 89, 183) !important ;
+  border-radius: 10px !important;
+  /* margin-left: 16px !important; */
+  height: 40px !important;
+  padding: 12px !important;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 6em;
+  /* margin-left: 6em; */
+  text-align: left;
+}
+
+.resourceHeading {
+  margin-bottom: 12px;
+}
+
+ul li {
+  margin-bottom: 1em;
+}
+
+.footerText {
+  color: aliceblue;
+}
+
+/* .footerLogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    height: 6em;
+  } */
+/* .footerLogoSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+  } */
+
+/* . */
+/* .homeNav {
+    color: rgb(228, 101, 3);
+    font-size: medium;
+    font-weight: bold;
+  }
+  .homeNav:hover {
+    color: gray;
+  } */
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  color: black;
+}
+
+.horizontalRow {
+  color: gray;
+}
+.copyright {
+  position: relative;
+  bottom: 0;
+}

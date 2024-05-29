@@ -3,6 +3,7 @@ import Topbar from '../../components/topbar/Topbar';
 import Main from '../../components/main/Main';
 import { useSearchParams } from 'react-router-dom';
 import { client } from '../../helpers';
+import Footer from '../../components/footer/Footer';
 
 function Home() {
   const [queryParams] = useSearchParams();
@@ -36,6 +37,7 @@ function Home() {
       <div className="homeContainer">
         <Topbar />
         <Main />
+        {/* <Footer /> */}
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import { client } from '../../helpers';
 import { tmbdApiConfig } from '../../config';
 import TrendingMovie from '../trending/TrendingMovie';
 import TrendingWeek from '../trendingWeek/TrendingWeek';
+import Footer from '../footer/Footer';
 
 function Main() {
   const [searchMovie, setSearchMovie] = useState('');
@@ -55,70 +56,77 @@ function Main() {
       {isLoading || trending.length === 0 || trendingWeek.length === 0 ? (
         <LinearProgress />
       ) : (
-        <div className="mainContainer">
-          <div className="topContainer">
-            <img src="src/assets/image.png" alt="" className="backgroundImg" />
-
-            <div className="searchbar">
-              <Link to={'/feed?q=' + searchMovie} className="searchbarIcon">
-                <Button className="button">search</Button>
-                {/* <Search /> */}
-              </Link>
-
-              <input
-                type="text"
-                placeholder="Search for movies, tvShows and many more..."
-                className="searchbarInput"
-                onChange={(e) => setSearchMovie(e.target.value)}
+        <div>
+          <div className="mainContainer">
+            <div className="topContainer">
+              <img
+                src="src/assets/image.png"
+                alt=""
+                className="backgroundImg"
               />
-            </div>
-          </div>
 
-          <div className="bottomContainer">
-            <div className="trending">Trending</div>
-            <div className="switchButton">
-              <Button
-                className={`todayButton  ${
-                  activeButton === buttons.today ? 'actived' : ''
-                }`}
-                onClick={() => {
-                  {
-                    isLoading ? (
-                      <LinearProgress />
-                    ) : (
-                      setActiveButton(buttons.today)
-                    );
-                  }
-                }}
-              >
-                Today
-              </Button>
-              <Button
-                className={`thisWeekButton  ${
-                  activeButton === buttons.thisWeek ? 'actived' : ''
-                }`}
-                onClick={() => {
-                  {
-                    isLoading ? (
-                      <LinearProgress />
-                    ) : (
-                      setActiveButton(buttons.thisWeek)
-                    );
-                  }
-                }}
-              >
-                This Week
-              </Button>
+              <div className="searchbar">
+                <Link to={'/feed?q=' + searchMovie} className="searchbarIcon">
+                  <Button className="button">search</Button>
+                  {/* <Search /> */}
+                </Link>
+
+                <input
+                  type="text"
+                  placeholder="Search for movies, tvShows and many more..."
+                  className="searchbarInput"
+                  onChange={(e) => setSearchMovie(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="bottomContainer">
+              <div className="trending">Trending</div>
+              <div className="switchButton">
+                <Button
+                  className={`todayButton  ${
+                    activeButton === buttons.today ? 'actived' : ''
+                  }`}
+                  onClick={() => {
+                    {
+                      isLoading ? (
+                        <LinearProgress />
+                      ) : (
+                        setActiveButton(buttons.today)
+                      );
+                    }
+                  }}
+                >
+                  Today
+                </Button>
+                <Button
+                  className={`thisWeekButton  ${
+                    activeButton === buttons.thisWeek ? 'actived' : ''
+                  }`}
+                  onClick={() => {
+                    {
+                      isLoading ? (
+                        <LinearProgress />
+                      ) : (
+                        setActiveButton(buttons.thisWeek)
+                      );
+                    }
+                  }}
+                >
+                  This Week
+                </Button>
+              </div>
+            </div>
+            <div>
+              {activeButton === buttons.today && (
+                <TrendingMovie trending={trending} />
+              )}
+              {activeButton === buttons.thisWeek && (
+                <TrendingWeek trendingWeek={trendingWeek} />
+              )}
             </div>
           </div>
-          <div>
-            {activeButton === buttons.today && (
-              <TrendingMovie trending={trending} />
-            )}
-            {activeButton === buttons.thisWeek && (
-              <TrendingWeek trendingWeek={trendingWeek} />
-            )}
-          </div>
+          <Footer />
         </div>
       )}
     </>

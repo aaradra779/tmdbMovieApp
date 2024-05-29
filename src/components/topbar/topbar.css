@@ -4,7 +4,7 @@
   /* padding: 16px; */
   display: flex;
   justify-content: space-around;
-  background-color: rgb(17, 89, 183);
+  background-color: midnightblue;
   align-items: center;
 }
 
@@ -61,4 +61,5 @@
 a:-webkit-any-link {
   cursor: pointer;
   text-decoration: none;
+  color: black;
 }
