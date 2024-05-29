@@ -8,6 +8,7 @@ import { tmbdApiConfig } from '../../config';
 import MovieList from '../../components/movieList/MovieList';
 import TvshowList from '../../components/tvshowList/TvshowList';
 import PersonList from '../../components/personList/PersonList';
+import { CircularProgress, LinearProgress } from '@mui/material';
 
 function Feed() {
   const [moviesList, setMovieList] = useState({ results: [] });
@@ -23,9 +24,11 @@ function Feed() {
   const [activeFeed, setActiveFeed] = useState(feeds.movies);
   const [searchParams] = useSearchParams();
   const [searchMovie, setSearchMovie] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchApi = async () => {
+      setIsLoading(true);
       const res = await client.get(
         `search/movie?query=${searchParams.get('q')}`,
 
@@ -57,6 +60,7 @@ function Feed() {
         }
       );
       setPersonList(personResponse.data);
+      setIsLoading(false);
     };
 
     fetchApi();
@@ -126,11 +130,24 @@ function Feed() {
         <ul className="movielistRight">
           {/* <Outlet context={moviesList}  /> */}
 
-          {activeFeed === feeds.movies && <MovieList moviesList={moviesList} />}
-          {activeFeed === feeds.tvShows && <TvshowList tvshowList={tvList} />}
+          {isLoading ||
+          moviesList.length === 0 ||
+          tvList.length === 0 ||
+          personList.length === 0 ? (
+            <LinearProgress />
+          ) : (
+            <div>
+              {activeFeed === feeds.movies && (
+                <MovieList moviesList={moviesList} />
+              )}
+              {activeFeed === feeds.tvShows && (
+                <TvshowList tvshowList={tvList} />
+              )}
 
-          {activeFeed === feeds.persons && (
-            <PersonList personList={personList} />
+              {activeFeed === feeds.persons && (
+                <PersonList personList={personList} />
+              )}
+            </div>
           )}
         </ul>
       </div>

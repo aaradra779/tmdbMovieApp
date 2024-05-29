@@ -1,6 +1,7 @@
 import React from 'react';
 import './trendingWeek.css';
 import { imageUrl } from '../../helpers';
+import { FavoriteBorder } from '@mui/icons-material';
 
 function TrendingWeek({ trendingWeek }) {
   return (
@@ -15,7 +16,12 @@ function TrendingWeek({ trendingWeek }) {
                 className="trendingMovie"
               />
               <div className="trendingMovieName">{item.title}</div>
-              <div className="trendingMovieDate">{item.release_date}</div>
+              <div className="addFav">
+                <div className="trendingMovieDate">{item.release_date}</div>
+                <div className="favourited">
+                  <FavoriteBorder className="iconList" />
+                </div>
+              </div>
             </li>
           ))}
         </ul>

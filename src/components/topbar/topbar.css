@@ -15,6 +15,12 @@
 /* .topbarRight {
 } */
 
+.logoText {
+  font-size: 20px;
+  color: aliceblue;
+  font-weight: bold;
+}
+
 .topbarMiddle {
   display: flex;
 }

@@ -81,7 +81,15 @@ function Main() {
                 className={`todayButton  ${
                   activeButton === buttons.today ? 'actived' : ''
                 }`}
-                onClick={() => setActiveButton(buttons.today)}
+                onClick={() => {
+                  {
+                    isLoading ? (
+                      <LinearProgress />
+                    ) : (
+                      setActiveButton(buttons.today)
+                    );
+                  }
+                }}
               >
                 Today
               </Button>
@@ -89,7 +97,15 @@ function Main() {
                 className={`thisWeekButton  ${
                   activeButton === buttons.thisWeek ? 'actived' : ''
                 }`}
-                onClick={() => setActiveButton(buttons.thisWeek)}
+                onClick={() => {
+                  {
+                    isLoading ? (
+                      <LinearProgress />
+                    ) : (
+                      setActiveButton(buttons.thisWeek)
+                    );
+                  }
+                }}
               >
                 This Week
               </Button>

@@ -38,11 +38,37 @@ function Topbar() {
     },
   ];
 
+  const handleLogout = async () => {
+    const getSessionId = localStorage.getItem('session_id');
+    // console.log(getSessionId);
+    if (!getSessionId) {
+      console.log('no token found');
+      return;
+    }
+
+    try {
+      const response = await client
+        .delete('authentication/session', {
+          session_id: 'getSessionId',
+        })
+        .then((res) => {
+          console.log(res);
+        });
+
+      // localStorage.removeItem('session_id');
+
+      // console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          <img src="src/assets/react.svg" alt="" />
+          <p className="logoText">Search Movies</p>
+          {/* <img src="src/assets/react.svg" alt="" /> */}
         </div>
         <div className="topbarMiddle">
           <Link to="/">
@@ -56,7 +82,14 @@ function Topbar() {
         <div className="topbarRight">
           <span className="profile">Profile</span>
 
-          {localStorage.getItem('session_id') && <People className="icon" />}
+          {
+            localStorage.getItem('session_id') && (
+              <Button className="LoginButton" onClick={handleLogout}>
+                Log out
+              </Button>
+            )
+            // <People className="icon" />
+          }
 
           {!localStorage.getItem('session_id') && (
             <Button
