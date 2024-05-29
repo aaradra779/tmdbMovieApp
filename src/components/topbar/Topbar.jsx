@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './topbar.css';
 import { FavoriteBorder, People } from '@mui/icons-material';
 import { Link, redirect } from 'react-router-dom';
@@ -7,6 +7,13 @@ import Dropdown from '../dropdown/Dropdown';
 import { client } from '../../helpers';
 
 function Topbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('session_id')) setIsLoggedIn(true);
+    else setIsLoggedIn(false);
+  }, []);
+
   const tvshows = [
     {
       label: 'Popular',
@@ -49,18 +56,21 @@ function Topbar() {
     try {
       const response = await client
         .delete('authentication/session', {
-          session_id: 'getSessionId',
+          data: {
+            session_id: getSessionId,
+          },
         })
         .then((res) => {
           console.log(res);
         });
 
-      // localStorage.removeItem('session_id');
-
       // console.log(response.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
+    } finally {
+      localStorage.removeItem('session_id');
     }
+    setIsLoggedIn(false);
   };
 
   return (
