@@ -8,6 +8,11 @@ import Footer from '../../components/footer/Footer';
 function Home() {
   const [queryParams] = useSearchParams();
   const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState([]);
+
+  const getSessionId = () => {
+    return localStorage.getItem('session_id');
+  };
 
   useEffect(() => {
     if (
@@ -28,6 +33,17 @@ function Home() {
           console.log(err);
         });
     }
+
+    const fetchApi = async () => {
+      const session_id = getSessionId();
+      const accountResponse = await client.get(
+        `account?session_id=${session_id}`
+      );
+
+      setUserData(accountResponse.data);
+      console.log(accountResponse.data);
+    };
+    fetchApi();
   }, []);
 
   return (
@@ -35,7 +51,7 @@ function Home() {
       {/* <div>Home</div> */}
 
       <div className="homeContainer">
-        <Topbar />
+        <Topbar user={userData} />
         <Main />
         {/* <Footer /> */}
       </div>

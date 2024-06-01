@@ -6,12 +6,22 @@ import { Button } from '@mui/material';
 import Dropdown from '../dropdown/Dropdown';
 import { client } from '../../helpers';
 
-function Topbar() {
+function Topbar({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem('session_id')) setIsLoggedIn(true);
-    else setIsLoggedIn(false);
+    if (localStorage.getItem('session_id')) {
+      setIsLoggedIn(true);
+    } else setIsLoggedIn(false);
+
+    // const fetchApi = async () => {
+    //   const accountResponse = await client.get(
+    //     `account?session_id=${session_id}`
+    //   );
+    //   setUserData(accountResponse.data);
+    //   console.log(accountResponse.data);
+    // };
+    // fetchApi();
   }, []);
 
   const tvshows = [
@@ -45,6 +55,23 @@ function Topbar() {
     },
   ];
 
+  const handleLogin = async () => {
+    // setIsLoggedIn(true);
+    const response = await client.get('authentication/token/new');
+    const requestToken = response.data.request_token;
+    console.log(requestToken);
+    const url =
+      'https://www.themoviedb.org/authenticate/' +
+      requestToken +
+      '?redirect_to=http://localhost:5173';
+
+    window.open(url, '_self');
+
+    // const accountResponse = await client.get(`account`);
+    // setUserData(accountResponse.data);
+    // console.log(accountResponse.data);
+  };
+
   const handleLogout = async () => {
     const getSessionId = localStorage.getItem('session_id');
     // console.log(getSessionId);
@@ -61,7 +88,7 @@ function Topbar() {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         });
 
       // console.log(response.data);
@@ -77,7 +104,7 @@ function Topbar() {
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          <p className="logoText">Search Movies</p>
+          <p className="logoText">Search {user.username}</p>
           {/* <img src="src/assets/react.svg" alt="" /> */}
         </div>
         <div className="topbarMiddle">
@@ -98,28 +125,15 @@ function Topbar() {
                 Log out
               </Button>
             )
+            // && <FavoriteBorder className="icon" />
             // <People className="icon" />
           }
 
           {!localStorage.getItem('session_id') && (
-            <Button
-              className="LoginButton"
-              onClick={async () => {
-                const response = await client.get('authentication/token/new');
-                const requestToken = response.data.request_token;
-                console.log(requestToken);
-                const url =
-                  'https://www.themoviedb.org/authenticate/' +
-                  requestToken +
-                  '?redirect_to=http://localhost:5173';
-
-                window.open(url);
-              }}
-            >
+            <Button className="LoginButton" onClick={handleLogin}>
               Log in
             </Button>
           )}
-          <FavoriteBorder className="icon" />
         </div>
       </div>
     </>
