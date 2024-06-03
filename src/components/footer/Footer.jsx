@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactLogo from '../../assets/react.svg';
 import { Link, NavLink } from 'react-router-dom';
 import './footer.css';
 import { Button } from '@mui/material';
 
-function Footer() {
+function Footer({ user }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('session_id')) {
+      setIsLoggedIn(true);
+    } else setIsLoggedIn(false);
+  }, []);
   return (
     <>
       <footer className="footer">
@@ -13,7 +20,11 @@ function Footer() {
             <Link to="/">
               <div className="footerLogo">
                 <p className="logoName">Your Logo</p>
-                <Button className="footerButton">Hi Alex!</Button>
+                {isLoggedIn ? (
+                  <Button className="footerButton">Hi {user.username}!</Button>
+                ) : (
+                  <Button className="footerButton">Hi user!</Button>
+                )}
               </div>
             </Link>
 

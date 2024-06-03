@@ -28,6 +28,7 @@ function Home() {
           // console.log(res.data);
           localStorage.setItem('session_id', res.data.session_id);
           setIsLoggedIn(true);
+          window.location.reload();
         })
         .catch((err) => {
           console.log(err);
@@ -52,7 +53,7 @@ function Home() {
 
       <div className="homeContainer">
         <Topbar user={userData} />
-        <Main />
+        <Main user={userData} />
         {/* <Footer /> */}
       </div>
     </>

@@ -8,7 +8,7 @@ import TrendingMovie from '../trending/TrendingMovie';
 import TrendingWeek from '../trendingWeek/TrendingWeek';
 import Footer from '../footer/Footer';
 
-function Main() {
+function Main({ user }) {
   const [searchMovie, setSearchMovie] = useState('');
   const buttons = {
     today: 'today',
@@ -88,13 +88,9 @@ function Main() {
                     activeButton === buttons.today ? 'actived' : ''
                   }`}
                   onClick={() => {
-                    {
-                      isLoading ? (
-                        <LinearProgress />
-                      ) : (
-                        setActiveButton(buttons.today)
-                      );
-                    }
+                    <LinearProgress />;
+
+                    setActiveButton(buttons.today);
                   }}
                 >
                   Today
@@ -104,13 +100,9 @@ function Main() {
                     activeButton === buttons.thisWeek ? 'actived' : ''
                   }`}
                   onClick={() => {
-                    {
-                      isLoading ? (
-                        <LinearProgress />
-                      ) : (
-                        setActiveButton(buttons.thisWeek)
-                      );
-                    }
+                    <LinearProgress />;
+
+                    setActiveButton(buttons.thisWeek);
                   }}
                 >
                   This Week
@@ -126,7 +118,7 @@ function Main() {
               )}
             </div>
           </div>
-          <Footer />
+          <Footer user={user} />
         </div>
       )}
     </>

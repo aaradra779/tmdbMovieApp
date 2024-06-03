@@ -8,20 +8,12 @@ import { client } from '../../helpers';
 
 function Topbar({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  // const [Isbuttons, setButtons]
 
   useEffect(() => {
     if (localStorage.getItem('session_id')) {
       setIsLoggedIn(true);
     } else setIsLoggedIn(false);
-
-    // const fetchApi = async () => {
-    //   const accountResponse = await client.get(
-    //     `account?session_id=${session_id}`
-    //   );
-    //   setUserData(accountResponse.data);
-    //   console.log(accountResponse.data);
-    // };
-    // fetchApi();
   }, []);
 
   const tvshows = [
@@ -59,17 +51,14 @@ function Topbar({ user }) {
     // setIsLoggedIn(true);
     const response = await client.get('authentication/token/new');
     const requestToken = response.data.request_token;
-    console.log(requestToken);
+    // console.log(requestToken);
     const url =
       'https://www.themoviedb.org/authenticate/' +
       requestToken +
       '?redirect_to=http://localhost:5173';
 
     window.open(url, '_self');
-
-    // const accountResponse = await client.get(`account`);
-    // setUserData(accountResponse.data);
-    // console.log(accountResponse.data);
+    // setIsLoggedIn(true);
   };
 
   const handleLogout = async () => {
@@ -104,7 +93,11 @@ function Topbar({ user }) {
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          <p className="logoText">Search {user.username}</p>
+          {isLoggedIn ? (
+            <p className="logoText">Search {user.username}</p>
+          ) : (
+            <p className="logoText"> Search</p>
+          )}
           {/* <img src="src/assets/react.svg" alt="" /> */}
         </div>
         <div className="topbarMiddle">
@@ -117,9 +110,19 @@ function Topbar({ user }) {
           <span className="home">Movies</span>
         </div>
         <div className="topbarRight">
-          <span className="profile">Profile</span>
+          {isLoggedIn ? <span className="profile">Profile</span> : ''}
 
-          {
+          {isLoggedIn ? (
+            <Button className="LoginButton" onClick={handleLogout}>
+              Log out
+            </Button>
+          ) : (
+            <Button className="LoginButton" onClick={handleLogin}>
+              Log in
+            </Button>
+          )}
+
+          {/* {
             localStorage.getItem('session_id') && (
               <Button className="LoginButton" onClick={handleLogout}>
                 Log out
@@ -127,13 +130,13 @@ function Topbar({ user }) {
             )
             // && <FavoriteBorder className="icon" />
             // <People className="icon" />
-          }
-
+          } */}
+          {/* 
           {!localStorage.getItem('session_id') && (
             <Button className="LoginButton" onClick={handleLogin}>
               Log in
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </>
