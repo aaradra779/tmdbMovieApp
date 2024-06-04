@@ -96,7 +96,7 @@ function Topbar({ user }) {
           {isLoggedIn ? (
             <p className="logoText">Search {user.username}</p>
           ) : (
-            <p className="logoText"> Search</p>
+            <p className="logoText"> MovieQuestDB</p>
           )}
           {/* <img src="src/assets/react.svg" alt="" /> */}
         </div>
@@ -110,7 +110,13 @@ function Topbar({ user }) {
           <span className="home">Movies</span>
         </div>
         <div className="topbarRight">
-          {isLoggedIn ? <span className="profile">Profile</span> : ''}
+          {isLoggedIn ? (
+            <Link to="/profile">
+              <span className="profile">Profile</span>
+            </Link>
+          ) : (
+            ''
+          )}
 
           {isLoggedIn ? (
             <Button className="LoginButton" onClick={handleLogout}>
