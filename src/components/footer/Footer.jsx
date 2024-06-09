@@ -3,15 +3,22 @@ import ReactLogo from '../../assets/react.svg';
 import { Link, NavLink } from 'react-router-dom';
 import './footer.css';
 import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../../redux/userSlice';
 
-function Footer({ user }) {
+function Footer() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     if (localStorage.getItem('session_id')) {
       setIsLoggedIn(true);
     } else setIsLoggedIn(false);
-  }, []);
+
+    dispatch(fetchUser());
+  }, [dispatch]);
   return (
     <>
       <footer className="footer">
@@ -21,7 +28,9 @@ function Footer({ user }) {
               <div className="footerLogo">
                 <p className="logoName">Your Logo</p>
                 {isLoggedIn ? (
-                  <Button className="footerButton">Hi {user.username}!</Button>
+                  <Button className="footerButton">
+                    Hi {users.user.username}!
+                  </Button>
                 ) : (
                   <Button className="footerButton">Hi user!</Button>
                 )}

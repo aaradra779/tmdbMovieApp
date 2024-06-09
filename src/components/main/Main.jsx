@@ -7,8 +7,10 @@ import { tmbdApiConfig } from '../../config';
 import TrendingMovie from '../trending/TrendingMovie';
 import TrendingWeek from '../trendingWeek/TrendingWeek';
 import Footer from '../footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../../redux/userSlice';
 
-function Main({ user }) {
+function Main() {
   const [searchMovie, setSearchMovie] = useState('');
   const buttons = {
     today: 'today',
@@ -20,6 +22,9 @@ function Main({ user }) {
   const [isLoading, setIsLoading] = useState(false);
 
   // console.log(searchMovie);
+
+  // const dispatch = useDispatch();
+  // const users = useSelector((state) => state.users);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -49,6 +54,8 @@ function Main({ user }) {
     };
 
     fetchApi();
+
+    // dispatch(fetchUser());
   }, []);
 
   return (
@@ -118,7 +125,7 @@ function Main({ user }) {
               )}
             </div>
           </div>
-          <Footer user={user} />
+          {/* <Footer /> */}
         </div>
       )}
     </>

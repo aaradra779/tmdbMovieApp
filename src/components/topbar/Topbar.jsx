@@ -5,16 +5,22 @@ import { Link, redirect } from 'react-router-dom';
 import { Button } from '@mui/material';
 import Dropdown from '../dropdown/Dropdown';
 import { client } from '../../helpers';
+import { fetchUser } from '../../redux/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Topbar({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   // const [Isbuttons, setButtons]
+  // const dispatch = useDispatch();
+  // const users = useSelector((state) => state.users);
 
   useEffect(() => {
     if (localStorage.getItem('session_id')) {
       setIsLoggedIn(true);
     } else setIsLoggedIn(false);
-  }, []);
+
+    // dispatch(fetchUser());
+  });
 
   const tvshows = [
     {
@@ -87,17 +93,15 @@ function Topbar({ user }) {
       localStorage.removeItem('session_id');
     }
     setIsLoggedIn(false);
+    window.location.reload();
   };
 
   return (
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          {isLoggedIn ? (
-            <p className="logoText">Search {user.username}</p>
-          ) : (
-            <p className="logoText"> MovieQuestDB</p>
-          )}
+          <p className="logoText"> MovieQuestDB</p>
+
           {/* <img src="src/assets/react.svg" alt="" /> */}
         </div>
         <div className="topbarMiddle">

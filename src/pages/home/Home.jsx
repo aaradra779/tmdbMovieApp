@@ -4,6 +4,8 @@ import Main from '../../components/main/Main';
 import { useSearchParams } from 'react-router-dom';
 import { client } from '../../helpers';
 import Footer from '../../components/footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../../redux/userSlice';
 
 function Home() {
   const [queryParams] = useSearchParams();
@@ -13,6 +15,9 @@ function Home() {
   const getSessionId = () => {
     return localStorage.getItem('session_id');
   };
+
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     if (
@@ -35,26 +40,28 @@ function Home() {
         });
     }
 
-    const fetchApi = async () => {
-      const session_id = getSessionId();
-      const accountResponse = await client.get(
-        `account?session_id=${session_id}`
-      );
+    dispatch(fetchUser());
 
-      setUserData(accountResponse.data);
-      console.log(accountResponse.data);
-    };
-    fetchApi();
-  }, []);
+    // const fetchApi = async () => {
+    //   const session_id = getSessionId();
+    //   const accountResponse = await client.get(
+    //     `account?session_id=${session_id}`
+    //   );
+
+    //   setUserData(accountResponse.data);
+    //   console.log(accountResponse.data);
+    // };
+    // fetchApi();
+  }, [dispatch]);
 
   return (
     <>
       {/* <div>Home</div> */}
 
       <div className="homeContainer">
-        <Topbar user={userData} />
-        <Main user={userData} />
-        {/* <Footer /> */}
+        <Topbar />
+        <Main />
+        <Footer />
       </div>
     </>
   );

@@ -9,6 +9,7 @@ import MovieList from '../../components/movieList/MovieList';
 import TvshowList from '../../components/tvshowList/TvshowList';
 import PersonList from '../../components/personList/PersonList';
 import { CircularProgress, LinearProgress } from '@mui/material';
+import Footer from '../../components/footer/Footer';
 
 function Feed() {
   const [moviesList, setMovieList] = useState({ results: [] });
@@ -151,6 +152,7 @@ function Feed() {
           )}
         </ul>
       </div>
+      <Footer />
     </>
   );
 }

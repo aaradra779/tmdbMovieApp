@@ -1,5 +1,5 @@
-.profileContainer {
-}
+/* .profileContainer {
+} */
 
 .profileWrapper {
   padding: 20px;
@@ -50,9 +50,9 @@
   font-weight: 500;
 }
 
-.profileBottom {
-  /* padding: 20px; */
-}
+/* .profileBottom {
+
+} */
 .nav {
   margin-top: 20px;
   display: flex;

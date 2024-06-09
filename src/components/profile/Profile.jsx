@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './profile.css';
 import {
   ArrowDropDown,
@@ -8,8 +8,14 @@ import {
 } from '@mui/icons-material';
 import Topbar from '../topbar/Topbar';
 import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../../redux/userSlice';
 
-function profile() {
+function Profile() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users);
+  console.log(users);
+
   const activeButton = {
     overview: 'overview',
     watchlist: 'watchlist',
@@ -17,6 +23,10 @@ function profile() {
   };
 
   const [isActive, setActive] = useState(activeButton.overview);
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
 
   return (
     <>
@@ -32,7 +42,7 @@ function profile() {
             </div>
           </div>
           <div className="profileDetails">
-            <h2 className="detailText">Aaradra Gautam</h2>
+            <h2 className="detailText">{users.user.username}</h2>
             <p className="memberDate">since may 24th</p>
           </div>
           <div className="profileBottom">
@@ -108,4 +118,4 @@ function profile() {
   );
 }
 
-export default profile;
+export default Profile;
