@@ -1,0 +1,185 @@
+.previewTopContainer {
+  /* height: 40vh; */
+  background-color: midnightblue;
+  padding: 20px 40px 20px 40px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: linear-gradient(#997326, #535879);
+}
+
+.previewImg {
+  border-radius: 30px;
+  /* padding: 2px; */
+  width: 300px;
+  height: 400px;
+  /* object-fit: cover; */
+}
+
+.previewRight {
+  margin-left: 50px;
+}
+
+.title {
+  color: aliceblue;
+  margin-bottom: 10px;
+}
+
+.facts {
+  display: flex;
+  /* gap: 18px; */
+
+  align-items: center;
+  color: aliceblue;
+}
+
+.release {
+  padding-right: 10px;
+}
+
+.genres {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.genres::before {
+  font-size: 1.1em;
+  line-height: 1;
+  content: '•';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.runtime {
+  position: relative;
+  padding-left: 10px;
+}
+
+.runtime::before {
+  font-size: 1.1em;
+  line-height: 1;
+  content: '•';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.score {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.percentageScore {
+  background-color: antiquewhite;
+  margin-right: 10px;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.userscore {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.addtolist,
+.favourite,
+.bookmark {
+  margin-top: 10px;
+  background-color: midnightblue;
+  border-radius: 60%;
+  margin-right: 20px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.listIcon {
+  color: white;
+  font-size: 1.2em !important;
+}
+
+.playTrailer {
+  margin-top: 10px;
+  background-color: transparent;
+  border-radius: 60%;
+  margin-right: 20px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.arrow {
+  color: white;
+  font-size: 2em !important;
+}
+.play {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+.tagline {
+  font-size: 1.2em;
+  font-style: italic;
+  opacity: 0.8;
+  font-weight: 500;
+  color: midnightblue;
+  margin-bottom: 6px;
+}
+
+.overview {
+  margin-top: 12px;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.overviewText {
+  margin-top: 6px;
+  font-size: 18px;
+}
+
+.directorlist {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.profile {
+  margin-right: 20px;
+}
+
+a {
+  color: white !important;
+  font-weight: bold !important;
+}
+.character {
+  font-weight: 100;
+  margin-top: 4px;
+  font-size: 12;
+}
+.previewBottomContainer {
+  display: block;
+}
+
+.castText {
+  font-size: 32px;
+  padding: 20px;
+  margin-bottom: 10px;
+}

@@ -72,7 +72,7 @@ function Feed() {
 
   return (
     <>
-      <Topbar />
+      {/* <Topbar /> */}
 
       <div className="searchbarTop">
         <Link to={'/feed?q=' + searchMovie}>
@@ -152,7 +152,7 @@ function Feed() {
           )}
         </ul>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -59,9 +59,9 @@ function Home() {
       {/* <div>Home</div> */}
 
       <div className="homeContainer">
-        <Topbar />
+        {/* <Topbar /> */}
         <Main />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

@@ -16,6 +16,7 @@ import MovieList from './components/movieList/MovieList.jsx';
 import Profile from './components/profile/Profile.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
+import Preview from './components/preview/Preview.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/feed" element={<Feed />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/preview" element={<Preview />} />
     </Route>
   )
 );
