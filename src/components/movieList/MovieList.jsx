@@ -11,12 +11,8 @@ function MovieList({ moviesList }) {
       <div className="movielistContainer">
         <ul className="movielistRight">
           {moviesList.results.map((item) => (
-            <Link to={'/preview'}>
-              <li
-                key={item.id}
-                className="movieList"
-                onClick={() => console.log('clicked')}
-              >
+            <Link key={item.id} to={`/preview/${item.id}`}>
+              <li key={item.id} className="movieList">
                 <img
                   // src="src/assets/react.svg"
                   src={`${imageUrl}${item.backdrop_path}`}

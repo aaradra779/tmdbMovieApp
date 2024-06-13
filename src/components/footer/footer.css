@@ -16,26 +16,16 @@
 
 .footer {
   position: relative;
+  /* position: sticky; */
   bottom: 0;
-}
-
-.footerDiv {
+  height: 40vh;
   color: aliceblue;
   padding: 10px;
   background-color: midnightblue;
   /* width: 95%; */
   border-top: solid gray;
-  border-width: 2px;
-  height: 40vh;
-
-  /* position: absolute; */
-
-  /* width: 100%; */
-
-  /* display: flex;
-    flex-direction: row; */
-  /* justify-content: space-between; */
 }
+
 .footerSection {
   display: flex;
   flex-direction: row;

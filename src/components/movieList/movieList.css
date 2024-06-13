@@ -47,6 +47,7 @@
 
 .resultMovie {
   margin-bottom: 2px;
+  color: black;
 }
 
 .releaseDate {
@@ -56,4 +57,5 @@
 
 .movieOverview {
   font-weight: 400;
+  color: black;
 }

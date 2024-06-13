@@ -1,71 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './feed.css';
-import Topbar from '../../components/topbar/Topbar';
 import { Search } from '@mui/icons-material';
-import { client } from '../../helpers';
-import { Link, useSearchParams } from 'react-router-dom';
-import { tmbdApiConfig } from '../../config';
+import { Link } from 'react-router-dom';
 import MovieList from '../../components/movieList/MovieList';
 import TvshowList from '../../components/tvshowList/TvshowList';
 import PersonList from '../../components/personList/PersonList';
-import { CircularProgress, LinearProgress } from '@mui/material';
-import Footer from '../../components/footer/Footer';
+import { LinearProgress } from '@mui/material';
+
+import useMovieSearch from './useMovieSearch.js';
 
 function Feed() {
-  const [moviesList, setMovieList] = useState({ results: [] });
-  const [tvList, setTvList] = useState({ results: [] });
-  const [personList, setPersonList] = useState({
-    results: [],
-  });
+  const { isLoading, moviesList, tvList, personList } = useMovieSearch();
   const feeds = {
     movies: 'movies',
     tvShows: 'tvshows',
     persons: 'persons',
   };
   const [activeFeed, setActiveFeed] = useState(feeds.movies);
-  const [searchParams] = useSearchParams();
   const [searchMovie, setSearchMovie] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchApi = async () => {
-      setIsLoading(true);
-      const res = await client.get(
-        `search/movie?query=${searchParams.get('q')}`,
-
-        {
-          headers: {
-            Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
-          },
-        }
-      );
-      setMovieList(res.data);
-      // setIsMovieActive(moviesList);
-
-      const tvResponse = await client.get(
-        `search/tv?query=${searchParams.get('q')}`,
-        {
-          headers: {
-            Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
-          },
-        }
-      );
-      setTvList(tvResponse.data);
-
-      const personResponse = await client.get(
-        `search/person?query=${searchParams.get('q')}`,
-        {
-          headers: {
-            Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
-          },
-        }
-      );
-      setPersonList(personResponse.data);
-      setIsLoading(false);
-    };
-
-    fetchApi();
-  }, [searchParams]);
 
   const firstItem =
     moviesList.results.length > 0 ? moviesList.results[0].title : 'no results';
@@ -76,7 +28,7 @@ function Feed() {
 
       <div className="searchbarTop">
         <Link to={'/feed?q=' + searchMovie}>
-          <Search />
+          <Search className="searchAgain" />
         </Link>
 
         <input

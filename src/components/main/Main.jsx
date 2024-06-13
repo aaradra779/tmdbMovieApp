@@ -6,9 +6,6 @@ import { client } from '../../helpers';
 import { tmbdApiConfig } from '../../config';
 import TrendingMovie from '../trending/TrendingMovie';
 import TrendingWeek from '../trendingWeek/TrendingWeek';
-import Footer from '../footer/Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../redux/userSlice';
 
 function Main() {
   const [searchMovie, setSearchMovie] = useState('');
@@ -21,38 +18,32 @@ function Main() {
   const [trendingWeek, setTrendingWeek] = useState({ results: [] });
   const [isLoading, setIsLoading] = useState(false);
 
-  // console.log(searchMovie);
+  const fetchApi = async () => {
+    setIsLoading(true);
+    const res = await client.get(
+      'trending/movie/day',
 
-  // const dispatch = useDispatch();
-  // const users = useSelector((state) => state.users);
+      {
+        headers: {
+          Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
+        },
+      }
+    );
+    setTrending(res.data);
 
+    const trendingWeek = await client.get(
+      'trending/movie/week',
+
+      {
+        headers: {
+          Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
+        },
+      }
+    );
+    setTrendingWeek(trendingWeek.data);
+    setIsLoading(false);
+  };
   useEffect(() => {
-    const fetchApi = async () => {
-      setIsLoading(true);
-      const res = await client.get(
-        'trending/movie/day',
-
-        {
-          headers: {
-            Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
-          },
-        }
-      );
-      setTrending(res.data);
-
-      const trendingWeek = await client.get(
-        'trending/movie/week',
-
-        {
-          headers: {
-            Authorization: `Bearer ${tmbdApiConfig.API_READ_ACCESS_TOKEN}`,
-          },
-        }
-      );
-      setTrendingWeek(trendingWeek.data);
-      setIsLoading(false);
-    };
-
     fetchApi();
 
     // dispatch(fetchUser());
