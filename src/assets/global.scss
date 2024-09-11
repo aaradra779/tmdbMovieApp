@@ -1,0 +1,431 @@
+.header {
+  background-color: midnightblue;
+  width: 100%;
+  margin: 0;
+
+  &__nav {
+    background-color: midnightblue;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__text {
+    font-size: 20px;
+    color: aliceblue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__middle {
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+  &__item {
+    margin-right: 18px;
+    font-size: 18px;
+    color: aliceblue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__userprofile {
+    font-size: 16px;
+    color: aliceblue;
+    font-weight: bold;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  &__button {
+    background-color: aliceblue;
+    color: rgb(17, 89, 183);
+    border-radius: 10px;
+    /* margin-left: 16px; */
+    height: 40px;
+    padding: 8px;
+    cursor: pointer;
+  }
+}
+
+.search {
+  width: 100%;
+  padding: 20px;
+
+  &__field {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: antiquewhite;
+  }
+
+  &__input {
+    padding: 8px;
+    border: none;
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+
+  &__button {
+    background-color: rgb(17, 89, 183);
+    color: aliceblue;
+    border-radius: 0px 10px 10px 0px;
+    height: 40px;
+    border-width: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+}
+
+.container {
+  background-color: seashell;
+  height: 60vh;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  &__heading {
+    padding: 60px 0 0 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  &__subheading {
+    padding: 20px 0px 0 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+      sans-serif;
+    color: midnightblue;
+  }
+}
+
+.today {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 2em;
+
+  &__list {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 4px 4px;
+    display: flex;
+    overflow-x: scroll;
+    list-style: none;
+  }
+  &__item {
+    width: 100%;
+    height: 320px;
+    background-color: rgb(228, 251, 251);
+    margin-right: 12px;
+    margin-right: 20px;
+  }
+
+  &__image {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+  }
+  &__title {
+    padding: 10px 10px 4px 10px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  &__releasedate {
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &__fact {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    color: midnightblue;
+    margin-left: 16px;
+    border-radius: 50%;
+    padding: 4px;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  // padding: 4px;
+
+  &__title {
+    font-size: 24px;
+    margin-right: 20px;
+    font-weight: bold;
+    color: midnightblue;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    // border-radius: 10px;
+  }
+
+  &__today {
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &__week {
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__active {
+    background-color: midnightblue;
+    color: aliceblue;
+    border-radius: 10px;
+  }
+}
+
+.togglebutton {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  &__title {
+    font-size: 24px;
+    margin-right: 20px;
+    font-weight: bold;
+    color: midnightblue;
+  }
+  &__active {
+    background-color: midnightblue;
+    color: aliceblue;
+    border-radius: 10px;
+  }
+}
+
+.footer {
+  bottom: 0;
+  height: 40vh;
+  color: aliceblue;
+  padding: 10px;
+  background-color: midnightblue;
+  border-top: solid gray;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 4em;
+    margin-bottom: 6em;
+  }
+
+  &__leftsection {
+    align-self: center;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__button {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: midnightblue;
+    cursor: pointer;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    margin-right: 6em;
+  }
+
+  &__itemsheading {
+    margin-bottom: 10px;
+  }
+
+  &__items {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  &__copyright {
+    bottom: 0;
+  }
+
+  &__copyrightlink {
+    margin-left: 6em;
+  }
+}
+
+.popular {
+  &__title {
+    padding: 20px;
+    font-size: 24px;
+    margin-right: 20px;
+    font-weight: bold;
+    color: midnightblue;
+  }
+}
+
+.total{
+  justify-content: right;
+  display: flex;
+  padding-right: 20px;
+  font-weight: bold;
+  
+  &__count{
+    background-color: antiquewhite;
+    color: midnightblue;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+}
+
+.results {
+  display: block;
+  padding: 20px;
+
+  
+
+  &__items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* background-color: aquamarine; */
+    margin-bottom: 16px;
+    border-radius: 10px;
+    padding: 4px;
+    /* -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68); */
+    box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.68);
+    cursor: pointer;
+  }
+
+  &__image {
+    padding: 4px;
+    /* background-color: rgb(88, 118, 254); */
+    /* border: 2px solid rgb(246, 192, 192); */
+    /* border-color: rgb(135, 135, 135); */
+    border-radius: 10px;
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  &__title {
+    color: black;
+    margin-bottom: 1em;
+  }
+
+  &__releasedate {
+    margin-bottom: 1em;
+    color: black;
+  }
+  &__overview {
+    color: black;
+  }
+}
+.countContainer{
+
+
+ 
+
+
+
+  &__listitems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  &__movie{
+    font-size: 18px;
+  }
+
+  &__movieCount{
+    background-color: aliceblue;
+    padding: 6px;
+    border-radius: 4px;
+    color: midnightblue;
+
+  }
+
+
+  &__active{
+    background-color: gainsboro;
+  }
+
+
+
+
+
+}
+
+
+
+.searchedResults{
+  display: flex;
+
+  &__list{
+    list-style: none;
+  }
+
+  &__title{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: midnightblue;
+    color: aliceblue;
+    padding: 30px 20px 30px 20px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 12px;
+
+  }
+
+
+  &__sidebar{
+    flex: 1;
+    background-color: antiquewhite;
+    height: 40vh;
+    border-radius: 12px;
+    margin-top: 3.8em;
+    margin-left: 20px;
+
+
+  }
+
+  &__results{
+    flex: 3;
+  }
+}

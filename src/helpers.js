@@ -19,9 +19,11 @@ client.interceptors.request.use(
     } else {
     }
     return config;
-  },
-
-  function (error) {
-    return Promise.reject(error);
   }
+
+  // function (error) {
+  //   if (401 === error.response.status) {
+  //     return (window.location = '/');
+  //   } else return Promise.reject(error);
+  // }
 );

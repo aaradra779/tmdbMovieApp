@@ -4,37 +4,32 @@ import App from './App.jsx';
 import './index.css';
 import {
   Route,
-  Router,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
 import Home from './pages/home/Home.jsx';
+import SearchResults from './pages/searchResults/SearchResults.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Details from './pages/movieDetails/Details.jsx';
 
-import Feed from './pages/feed/Feed.jsx';
-import MovieList from './components/movieList/MovieList.jsx';
-import Profile from './components/profile/Profile.jsx';
-import { Provider } from 'react-redux';
-import store from './redux/store.js';
-import Preview from './components/preview/Preview.jsx';
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Home />} />
-      <Route path="/feed" element={<Feed />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/preview/:id" element={<Preview />} />
+      <Route path="/SearchResults" element={<SearchResults />} />
+      <Route path="/details" element={<Details />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-
       {/* <App /> */}
-    </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
